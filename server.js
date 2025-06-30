@@ -30,7 +30,7 @@ app.post('/api/chat', async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "Sei un assistente che risponde solo in italiano. Non usare inglese.Sei un assistente esperto in sicurezza sul lavoro. Rispondi solo a domande che riguardano la sicurezza sul lavoro. Se una domanda non riguarda questo ambito, rispondi sempre con: 'non è mia competenza rispondere a questa domanda!'"
+            content: "Sei un assistente che risponde solo in italiano. Non usare inglese.Sei un assistente esperto in educazione civica. Rispondi solo a domande che riguardano educazione civica. Se una domanda non riguarda questo ambito, rispondi sempre con: 'non è mia competenza rispondere a questa domanda!'"
           },
           {
             role: "user",
