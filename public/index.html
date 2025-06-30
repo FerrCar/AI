@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistente FGDV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        .chat-container {
+            height: calc(100vh - 200px);
+        }
+        .message-animation {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .auth-modal {
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+        <nav class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-robot text-2xl"></i>
+                <span class="text-xl font-bold">AI per Educazione Civica</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-indigo-200 transition">Home</a>
+                <a href="dettagli.html" class="hover:text-indigo-200 transition">Dettagli</a>
+                <a href="conoscici.html" class="hover:text-indigo-200 transition">Conoscici</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="login-btn" class="px-4 py-2 rounded-lg bg-white text-indigo-600 font-medium hover:bg-indigo-50 transition">
+                    Login
+                </button>
+                <button id="signup-btn" class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-medium hover:bg-indigo-700 transition">
+                    Sign Up
+                </button>
+                <button class="md:hidden text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+   
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+      
+            <div class="lg:w-3/4 bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-indigo-600 text-white p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-400 flex items-center justify-center">
+                            <i class="fas fa-robot text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">AI UDA</h3>
+                            <p class="text-xs text-indigo-200">Online</p>
+                        </div>
+                    </div>
+                </div>
+                
+           
+                <div id="chat-messages" class="chat-container p-4 overflow-y-auto space-y-4">
+             
+                    <div class="message-animation flex">
+                        <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-robot text-indigo-600"></i>
+                        </div>
+                        <div class="max-w-[80%] bg-indigo-100 text-gray-800 p-3 rounded-lg rounded-tl-none">
+                            <p>Ciao! Sono il tuo assistente artificiale e rispondo solo a domande di educazione civica. cosa posso fare per te?</p>
+                            <p class="text-xs text-gray-500 mt-1">Just now</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+             
+                <div class="p-4 border-t border-gray-200">
+                    <div class="flex items-center space-x-2">
+                        <input type="text" id="chat-input" placeholder="Type your message..." 
+                            class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        <button id="send-btn" class="p-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+         
+            <div class="lg:w-1/4 space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold text-lg mb-4 text-indigo-600">Azioni veloci</h3>
+                    <div class="space-y-3">
+                        <button class="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <a href="idee.html" <span>Idee</span> </a>
+                        </button>
+                        <button class="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <a href="aiuto-codice.html" <span>Aiuto Codice</span> </a>
+                        </button>
+                        <button class="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <a href="faq.html" <span>FAQ</span> </a>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold text-lg mb-4 text-indigo-600">Chat recenti</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-indigo-50">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <span class="truncate">Idee per Siti web</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <span class="truncate">JavaScript</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-indigo-50 transition">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <span class="truncate">Consigli</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="auth-modal absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-indigo-600" id="modal-title">Login</h2>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+        
+                <form id="login-form" class="space-y-4">
+                    <div>
+                        <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="login-email" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="login-password" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember-me" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition">
+                        Login
+                    </button>
+                </form>
+                
+           
+                <form id="signup-form" class="space-y-4 hidden">
+                    <div>
+                        <label for="signup-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="signup-name" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="signup-email" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="signup-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="signup-password" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="signup-confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="terms" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" required>
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">
+                            I agree to the <a href="#" class="text-indigo-600 hover:text-indigo-800">Terms</a> and <a href="#" class="text-indigo-600 hover:text-indigo-800">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition">
+                        Create Account
+                    </button>
+                </form>
+                
+                <div class="mt-4 text-center">
+                    <p class="text-sm text-gray-600" id="toggle-auth-text">
+                        Don't have an account? <a href="#" id="toggle-auth" class="text-indigo-600 hover:text-indigo-800 font-medium">Sign up</a>
+                    </p>
+                </div>
+                
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 grid grid-cols-3 gap-3">
+                        <button class="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                            <i class="fab fa-google text-red-500 mr-2"></i>
+                        </button>
+                        <button class="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                            <i class="fab fa-facebook-f text-blue-600 mr-2"></i>
+                        </button>
+                        <button class="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                            <i class="fab fa-apple text-gray-800 mr-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">AI UDA</h3>
+                    <p class="text-gray-400">il tuo aiutante amichevole.</p>
+                </div>
+<div>
+    <h3 class="text-lg font-bold mb-4">Email</h3>
+    <p class="text-gray-400 mb-2">Mandate email per notizie.</p>
+    <form id="email-form">
+        <div class="flex">
+            <input type="email" id="email-input" placeholder="La tua email" required class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-700 transition">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 AI Assistant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const chatMessages = document.getElementById('chat-messages');
+
+    async function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        addMessage(message, 'user');
+        chatInput.value = '';
+
+        try {
+            const res = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await res.json();
+            const reply = data.reply || data.error || "Errore nella risposta 😢";
+            addMessage(reply, 'bot');
+        } catch (err) {
+            addMessage("Errore di rete.", 'bot');
+        }
+    }
+
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message-animation', 'flex');
+
+        if (sender === 'user') {
+            messageDiv.classList.add('justify-end');
+            messageDiv.innerHTML = `
+                <div class="max-w-[80%] bg-indigo-600 text-white p-3 rounded-lg rounded-tr-none">
+                    <p>${text}</p>
+                    <p class="text-xs text-indigo-200 mt-1">Just now</p>
+                </div>
+            `;
+        } else {
+            messageDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                    <i class="fas fa-robot text-indigo-600"></i>
+                </div>
+                <div class="max-w-[80%] bg-indigo-100 text-gray-800 p-3 rounded-lg rounded-tl-none">
+                    <p>${text}</p>
+                    <p class="text-xs text-gray-500 mt-1">Just now</p>
+                </div>
+            `;
+        }
+
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+</script>
+<script>
+    const loginBtn = document.getElementById('login-btn');
+    const signupBtn = document.getElementById('signup-btn');
+    const modal = document.getElementById('auth-modal');
+    const closeModal = document.getElementById('close-modal');
+    const toggleAuth = document.getElementById('toggle-auth');
+    const loginForm = document.getElementById('login-form');
+    
+    const signupForm = document.getElementById('signup-form');
+    const toggleText = document.getElementById('toggle-auth-text');
+    signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('signup-name').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const password = document.getElementById('signup-password').value.trim();
+    const confirm = document.getElementById('signup-confirm-password').value.trim();
+    const terms = document.getElementById('terms').checked;
+
+    if (!name || !email || !password || !confirm || !terms) {
+        alert("Compila tutti i campi e accetta i termini.");
+        return;
+    }
+
+    if (password !== confirm) {
+        alert("Le password non corrispondono.");
+        return;
+    }
+
+    alert(`Account creato per ${name}`);
+    document.getElementById('auth-modal').classList.add('hidden');
+
+  
+    document.getElementById('login-btn').classList.add('hidden');
+    document.getElementById('signup-btn').classList.add('hidden');
+
+ 
+    const nav = document.querySelector('nav .flex.items-center.space-x-4');
+    const welcomeText = document.createElement('span');
+    welcomeText.textContent = `Benvenuto, ${name}!`;
+    welcomeText.className = 'text-white font-medium';
+    nav.appendChild(welcomeText);
+});
+
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value.trim();
+
+    if (email && password) {
+        alert(`Login effettuato con:\nEmail: ${email}`);
+        document.getElementById('auth-modal').classList.add('hidden');
+
+      
+        document.getElementById('login-btn').classList.add('hidden');
+        document.getElementById('signup-btn').classList.add('hidden');
+
+   
+        const nav = document.querySelector('nav .flex.items-center.space-x-4');
+        const welcomeText = document.createElement('span');
+        welcomeText.textContent = `Benvenuto! ${password}`;
+        welcomeText.className = 'text-white font-medium';
+        nav.appendChild(welcomeText);
+    } else {
+        alert("Per favore, completa tutti i campi.");
+    }
+});
+
+
+    loginBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        loginForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+        toggleText.innerHTML = `Non hai un account? <a href="#" id="toggle-auth" class="text-indigo-600 hover:text-indigo-800 font-medium">Sign up</a>`;
+    });
+
+    signupBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        signupForm.classList.remove('hidden');
+        toggleText.innerHTML = `Hai già un account? <a href="#" id="toggle-auth" class="text-indigo-600 hover:text-indigo-800 font-medium">Login</a>`;
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target.id === 'toggle-auth') {
+            e.preventDefault();
+            loginForm.classList.toggle('hidden');
+            signupForm.classList.toggle('hidden');
+            toggleText.innerHTML = loginForm.classList.contains('hidden')
+                ? `Hai già un account? <a href="#" id="toggle-auth" class="text-indigo-600 hover:text-indigo-800 font-medium">Login</a>`
+                : `Non hai un account? <a href="#" id="toggle-auth" class="text-indigo-600 hover:text-indigo-800 font-medium">Sign up</a>`;
+        }
+    });
+</script>
+<script>
+    const emailForm = document.getElementById('email-form');
+    const emailInput = document.getElementById('email-input');
+
+    emailForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        alert(`Grazie! L'indirizzo ${email} è stato registrato.`);
+        emailInput.value = '';
+    });
+</script>
+<script>
+document.querySelectorAll('.fab.fa-google, .fab.fa-facebook-f, .fab.fa-apple').forEach(icon => {
+    icon.closest('button').addEventListener('click', () => {
+        alert("Funzione non ancora disponibile. Integrazione OAuth in arrivo!");
+    });
+});
+</script>
+<script>
+document.querySelector('a[href="#"]').addEventListener('click', function(e) {
+    if (e.target.textContent.includes('Forgot password')) {
+        e.preventDefault();
+        const email = prompt("Inserisci il tuo indirizzo email per resettare la password:");
+        if (email) {
+            alert(`Se esiste un account con ${email}, riceverai presto un'email di recupero.`);
+        }
+    }
+});
+</script>
+<script>
+document.querySelector('a[href="#"]').addEventListener('click', function(e) {
+    if (e.target.textContent.includes('Forgot password')) {
+        e.preventDefault();
+        const email = prompt("Inserisci il tuo indirizzo email per resettare la password:");
+        if (email) {
+            alert(`Se esiste un account con ${email}, riceverai presto un'email di recupero.`);
+        }
+    }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiuto Codice - AI Assistente FGDV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <nav class="bg-indigo-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-robot text-2xl"></i>
+                <span class="text-xl font-bold">AI per Educazione Civica</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-indigo-200 transition">Home</a>
+                <a href="dettagli.html" class="hover:text-indigo-200 transition">Dettagli</a>
+                <a href="conoscici.html" class="hover:text-indigo-200 transition">Conoscici</a>
+                <a href="idee.html" class="hover:text-indigo-200 transition">Idee</a>
+                <a href="aiuto-codice.html" class="hover:text-indigo-200 transition">Aiuto Codice</a>
+                <a href="faq.html" class="hover:text-indigo-200 transition">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mx-auto px-4 py-16">
+<h1 class="text-4xl font-bold text-indigo-600 mb-6">Aiuto Codice</h1>
+<p><strong>"Aiuto Codice"</strong>, supporto tecnico e formativo</p>
+<p><strong>Guida rapida</strong>: esempi di snippet in HTML, CSS, JavaScript o Python</p>
+<p><strong>Risorse utili</strong>: link a documentazione, tutorial, editor online</p>
+<p><strong>FAQ tecniche</strong>: risposte a errori comuni (es. come faccio il PHP?, Le query?)</p>
+<p><strong>Esempi pratici:</strong></p>
+
+<p><strong>Variabili e operazioni:</strong></p>
+<pre><code>&lt;?php
+$nome = "Mario";
+$eta = 18;
+echo "Ciao, $nome. Hai $eta anni.";
+?&gt;
+</code></pre>
+
+<p><strong>Condizioni e cicli:</strong></p>
+<pre><code>&lt;?php
+if ($eta &gt;= 18) {
+    echo "Sei maggiorenne.";
+} else {
+    echo "Sei minorenne.";
+}
+
+for ($i = 0; $i &lt; 5; $i++) {
+    echo "Numero: $i &lt;br&gt;";
+}
+?&gt;
+</code></pre>
+
+<p><strong>Connessione al database MySQL (MySQLi):</strong></p>
+<pre><code>&lt;?php
+$conn = new mysqli("localhost", "user", "password", "nome_database");
+if ($conn-&gt;connect_error) {
+    die("Connessione fallita: " . $conn-&gt;connect_error);
+}
+echo "Connessione riuscita!";
+$conn-&gt;close();
+?&gt;
+</code></pre>
+
+<p><strong>Consiglio</strong>: usa sempre pratiche sicure.</p>
+
+    </div>
+
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">AI UDA</h3>
+                    <p class="text-gray-400">il tuo aiutante amichevole.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="dettagli.html" class="text-gray-400 hover:text-white transition">Dettagli</a></li>
+                        <li><a href="conoscici.html" class="text-gray-400 hover:text-white transition">Conoscici</a></li>
+                        <li><a href="idee.html" class="text-gray-400 hover:text-white transition">Idee</a></li>
+                        <li><a href="aiuto-codice.html" class="text-gray-400 hover:text-white transition">Aiuto Codice</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 AI Assistant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
